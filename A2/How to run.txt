@@ -1,0 +1,28 @@
+Because Hive depends on Hadoop, you need to first start HDFS and YARN:
+
+
+start-dfs.sh
+start-yarn.sh
+You can check if Hadoop is running by:
+
+
+jps
+It should show processes like NameNode, DataNode, ResourceManager, etc.
+
+
+How to Run it?
+Put your user_log.txt into HDFS:
+
+hdfs dfs -mkdir /logs
+hdfs dfs -put user_log.txt /logs
+
+Compile Java files and create a jar.
+
+Run your MapReduce job:
+
+hadoop jar yourjarfile.jar LogDriver /logs /output
+
+
+See the output:
+
+hdfs dfs -cat /output/part-r-00000
